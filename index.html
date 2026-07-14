@@ -74,12 +74,12 @@ img{max-width:100%}
 
 /* ---------- header / nav ---------- */
 header.top{position:sticky;top:0;z-index:60;background:rgba(21,28,38,.97);color:#e8e4d8;border-bottom:1px solid #2c3a4d}
-.topbar{display:flex;align-items:center;gap:14px;height:56px;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.topbar{display:flex;align-items:center;gap:14px;height:56px;max-width:1200px;margin:0 auto;padding:0 22px}
 .brand{font-family:'Oswald',sans-serif;font-weight:600;font-size:.98rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
 .brand .mono{color:var(--stone);font-size:.72rem;display:block;letter-spacing:.14em}
 nav.main{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 nav.main::-webkit-scrollbar{display:none}
-nav.main a{flex:0 0 auto;font-family:'Oswald',sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:#c8c2b2;text-decoration:none;padding:8px 9px;border-radius:6px;white-space:nowrap}
+nav.main a{flex:0 0 auto;font-family:'Oswald',sans-serif;font-size:.77rem;text-transform:uppercase;letter-spacing:.05em;color:#c8c2b2;text-decoration:none;padding:8px 8px;border-radius:6px;white-space:nowrap}
 nav.main a:hover,nav.main a:focus-visible{color:#fff;background:#26344a}
 .nav-toggle{display:none;margin-left:auto;align-items:center;gap:9px;background:transparent;border:1px solid #3b4c63;border-radius:8px;color:#e8e4d8;font-family:'Oswald',sans-serif;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;padding:7px 13px;cursor:pointer;flex:0 0 auto}
 .nav-toggle:hover,.nav-toggle:focus-visible{background:#26344a;outline:none}
@@ -88,7 +88,7 @@ nav.main a:hover,nav.main a:focus-visible{color:#fff;background:#26344a}
 .nav-toggle[aria-expanded="true"] .bars i:nth-child(1){transform:translateY(5px) rotate(45deg)}
 .nav-toggle[aria-expanded="true"] .bars i:nth-child(2){opacity:0}
 .nav-toggle[aria-expanded="true"] .bars i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
-@media(max-width:1080px){
+@media(max-width:1200px){
   .nav-toggle{display:inline-flex}
   nav.main{position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;background:rgba(21,28,38,.99);border-top:1px solid #2c3a4d;border-bottom:1px solid #2c3a4d;box-shadow:0 14px 30px rgba(0,0,0,.4);max-height:72vh;overflow-y:auto;overflow-x:hidden;padding:6px 0;display:none}
   nav.main.open{display:flex}
@@ -187,6 +187,8 @@ nav.main a:hover,nav.main a:focus-visible{color:#fff;background:#26344a}
 .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--stone);text-transform:uppercase;letter-spacing:.06em;padding:0 6px 6px}
 .legend span{display:flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.legend .attr{flex:1 1 100%;display:block;text-transform:none;letter-spacing:.01em;line-height:1.5;font-size:.72rem}
+.legend .attr a{color:var(--dawn);text-decoration:underline;white-space:nowrap}
 
 /* ---------- battle timeline ---------- */
 .battle{background:var(--night);color:#e6e1d4;border-radius:var(--radius);padding:34px 30px;border:1px solid #2c3a4d}
@@ -852,7 +854,7 @@ function renderMapView(){
     hint.textContent = currentView==='cop'
       ? (es?'◉ Foto aérea del Ejército de EE.UU. · el norte está arriba · toque un marcador':'◉ U.S. Army aerial photo · north is up · tap a marker')
       : (es?'◉ Foto del OP Topside · ~75 m al este del COP · el COP y el bazar quedan a la izquierda · toque un marcador':'◉ OP Topside photo · ~75 m east of the COP · main COP and bazaar are to the left · tap a marker');
-    legend.innerHTML = `<span>${es?'Imágenes: Combat Studies Institute del Ejército de EE.UU., <i>Wanat: Combat Action in Afghanistan, 2008</i> (dominio público). Marcadores añadidos para este estudio.':'Imagery: U.S. Army Combat Studies Institute, <i>Wanat: Combat Action in Afghanistan, 2008</i> (public domain). Markers added for this study.'}</span>`;
+    legend.innerHTML = `<span class="attr">${es?'Imagen aérea del Ejército de EE.UU., dominio público. <a href="#sources">Ver Fuentes ›</a>':'U.S. Army aerial imagery, public domain. <a href="#sources">See Sources ›</a>'}</span>`;
   } else {
     if(currentView==='cop') buildMapSVG(); else buildOPSVG();
     hint.textContent = currentView==='cop'
